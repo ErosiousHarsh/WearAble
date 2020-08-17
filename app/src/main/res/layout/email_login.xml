@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="@drawable/gradient_blue"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:stateListAnimator="@anim/bounce"
+            android:id="@+id/txtBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:layout_centerHorizontal="true"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:padding="0dp"
+            android:text="WearAble Beta"
+            android:textColor="#FFFFFF"
+            android:textSize="65sp" />
+
+        <TextView
+            android:id="@+id/txtSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtBanner"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/bangers"
+            android:gravity="center"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:text="Sign in\nwith your email"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:layout_marginBottom="100dp"/>
+
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/txtSignIn"
+            android:layout_centerInParent="true"
+            android:hint="Email address"
+            android:background="@drawable/background_edittext"
+            android:textSize="18sp"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

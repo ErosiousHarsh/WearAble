@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711284147197",
+    "firebase_url": "https://wearablealpha.firebaseio.com",
+    "project_id": "wearablealpha",
+    "storage_bucket": "wearablealpha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711284147197:android:21692d8d4e431031900f94",
+        "android_client_info": {
+          "package_name": "com.zc.wearablealpha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711284147197-0af7pcouma0mrq3l1pvt4nl884d94mg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOEZ77UXTNwkvxJ7BR4X54amSFMSWfJvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711284147197-0af7pcouma0mrq3l1pvt4nl884d94mg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imgBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/txtPhoneVerify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:layout_centerHorizontal="true"
+        android:textSize="40sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:shadowRadius="2"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/txtWaitingForOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waiting for OTP "
+        android:textColor="@color/white"
+        android:layout_below="@id/txtPhoneVerify"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"/>
+
+    <com.chaos.view.PinView
+        android:id="@+id/pinPhoneOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtWaitingForOtp"
+        style="@style/PinWidget.PinView"
+        app:lineColor="@color/black"
+        android:itemBackground="@color/white"
+        android:layout_centerHorizontal="true"
+        app:itemCount="6"
+        app:itemHeight="50dp"
+        app:itemWidth="50dp"
+        android:inputType="number"
+        android:cursorVisible="true"
+        app:hideLineWhenFilled="true"
+        app:itemRadius="5dp"/>
+
+</RelativeLayout>

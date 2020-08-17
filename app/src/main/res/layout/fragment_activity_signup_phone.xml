@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityFragmentSignUpPhone"
+    android:id="@+id/fragmentActivitySignUpPhone">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rlUser"
+        android:layout_marginTop="60dp"
+        android:padding="40dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:id="@+id/txtSmsCharges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We will send a verification code to verify your account"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/txtIdkNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="I don't know my number"
+            android:layout_below="@+id/txtSmsCharges"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1a0dab"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"/>
+
+        <!--    Edit text field to input mobile number-->
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/countryCodePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:ccp_autoDetectCountry="true"
+            android:layout_below="@id/txtIdkNumber"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/countryCodePicker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:hint="Phone number"
+            app:errorEnabled="true"
+            app:counterEnabled="true"
+            app:counterMaxLength="10">
+
+            <EditText
+                android:id="@+id/edtPhone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_phone_android_24"
+                android:drawablePadding="7dp"
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtPhoneOtpRates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialTxt"
+            android:layout_centerHorizontal="true"
+            android:text="Carrier SMS charges may apply"
+            android:textSize="18sp"
+            android:layout_marginBottom="30dp"
+            android:textColor="#000000"/>
+
+        <Button
+            android:id="@+id/btnPhoneNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:background="@drawable/rounded_corners_blue"
+            android:layout_below="@+id/txtPhoneOtpRates"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:visibility="visible"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"/>
+
+        <!--    Edit text field to input OTP from monbile-->
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

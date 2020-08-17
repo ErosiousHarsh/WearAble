@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityFragmentSignUpDetails"
+    android:id="@+id/fragmentActivitySignUpDetails">
+
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rlUser"
+        android:layout_marginTop="60dp"
+        android:padding="40dp">
+
+        <!--    Edit text field to input mobile number-->
+
+        <TextView
+            android:id="@+id/txtAccountCreation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create your account"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"
+            android:textSize="25sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxtFirstName"
+            android:layout_below="@id/txtAccountCreation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:hint="First name"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/edtFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_supervised_user_circle_24"
+                android:drawablePadding="7dp"
+                android:focusable="true"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxtLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialTxtFirstName"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:hint="Last name"
+            app:errorEnabled="true"
+            tools:ignore="RelativeOverlap">
+
+            <EditText
+                android:id="@+id/edtLastName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_supervised_user_circle_24"
+                android:drawablePadding="7dp"
+                android:focusable="true"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialTxtLastName"
+            android:layout_alignParentStart="true"
+            android:layout_centerHorizontal="true"
+            android:hint="Email address (optional)"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_mail_outline_24"
+                android:drawablePadding="7dp"
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialTxtEmail"
+            android:layout_alignParentStart="true"
+            android:hint="Password"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/edtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_lock_open_24"
+                android:drawablePadding="7dp"
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="@color/lightBlue"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true"
+            android:id="@+id/materialTxtPasswordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/materialTxtPassword"
+            android:layout_alignParentStart="true"
+            android:hint="Confirm password"
+            app:errorEnabled="true">
+
+            <EditText
+                android:id="@+id/edtPasswordConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/edit_text_border"
+                android:drawableStart="@drawable/ic_baseline_lock_open_24"
+                android:drawablePadding="7dp"
+                android:layout_gravity="center_horizontal"
+                android:focusable="true"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"/>
+            <Button
+                android:id="@+id/btnDetailsNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:textSize="17sp"
+                android:background="@drawable/rounded_corners_blue"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_horizontal"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:textAllCaps="false"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>
