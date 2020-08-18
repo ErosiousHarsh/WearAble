@@ -40,7 +40,6 @@ class VerifyPhone : AppCompatActivity() {
                 toast("Verification completed")
                 signIn(credential)
                 code = credential.smsCode.toString()
-                toast(code)
                 verificationCompleted = 1
             }
             override fun onVerificationFailed(e: FirebaseException) {
@@ -88,7 +87,6 @@ class VerifyPhone : AppCompatActivity() {
             TimeUnit.SECONDS,
             this,
             callbacks)
-        toast("+91$phoneNumber")
     }
 
     //User manually enters OTP
