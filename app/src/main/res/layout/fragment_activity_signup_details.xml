@@ -135,7 +135,7 @@
                 android:focusable="true"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
