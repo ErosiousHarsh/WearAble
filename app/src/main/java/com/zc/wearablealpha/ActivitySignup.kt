@@ -2,8 +2,7 @@ package com.zc.wearablealpha
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.*
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 
 class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
 
@@ -14,10 +13,8 @@ class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
             val frag = ActivityFragmentSignUpPhone()
             frag.arguments = bundle
             replace(R.id.fragmentSignUp, frag)
-            addToBackStack(null)
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,18 +1,16 @@
 package com.zc.wearablealpha
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_activity_signup_details.*
 
 class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
 
+    //Variables declaration
     private lateinit var matTxtFirstName: com.google.android.material.textfield.TextInputLayout
     private lateinit var edtFirstName: EditText
 
@@ -39,6 +37,7 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_activity_signup_details, container, false)
 
+        //Variables initialization
         matTxtFirstName = rootView.findViewById(R.id.materialTxtFirstName)
         edtFirstName = rootView.findViewById(R.id.edtFirstName)
 
@@ -70,30 +69,21 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
                     bundle.putString("lastName",edtLastName.text.toString())
                     matTxtLastName.isErrorEnabled = false
 
-                    if(edtEmail.text.toString().isNotEmpty()) {
+                    if(edtPassword.text.toString().length >7) {
 
-                        bundle.putString("email",edtEmail.text.toString())
-                        matTxtEmail.isErrorEnabled = false
+                        bundle.putString("pass",edtPassword.text.toString())
+                        matTxtPassword.isErrorEnabled = false
 
-                        if(edtPassword.text.toString().length >7) {
-
-                            bundle.putString("pass",edtPassword.text.toString())
-                            matTxtPassword.isErrorEnabled = false
-
-                            if(edtPassword.text.toString().equals(edtPasswordConfirm.text.toString())) {
-                                bundle.putString("passConfirm",edtPasswordConfirm.text.toString())
-                                matTxtPasswordConfirm.isErrorEnabled = false
-                                showOtherFragment()
-                            } else {
-                                matTxtPasswordConfirm.error = "Password's do not match"
-                            }
-
+                        if(edtPassword.text.toString().equals(edtPasswordConfirm.text.toString())) {
+                            bundle.putString("passConfirm",edtPasswordConfirm.text.toString())
+                            matTxtPasswordConfirm.isErrorEnabled = false
+                            showOtherFragment()
                         } else {
-                            matTxtPassword.error = "Password's length must be greater than 7"
+                            matTxtPasswordConfirm.error = "Password's do not match"
                         }
 
                     } else {
-                        matTxtEmail.error = "Enter valid email"
+                        matTxtPassword.error = "Password's length must be greater than 7"
                     }
 
                 } else {
@@ -113,11 +103,5 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
         val fc = activity as FragmentChangeListener?
         fc?.replaceFragment(bundle)
     }
+
 }
-//startActivity(
-//                Intent(activity?.baseContext,ActivitySignup::class.java)
-//                    .putExtra("firstName",edtFirstName.text.toString())
-//                    .putExtra("lastName",edtLastName.text.toString())
-//                    .putExtra("email",edtEmail.text.toString())
-//                    .putExtra("password",edtPassword.text.toString())
-//                    .putExtra("confirmPassword",edtPasswordConfirm.text.toString()))

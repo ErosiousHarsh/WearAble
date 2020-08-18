@@ -1,6 +1,8 @@
 package com.zc.wearablealpha
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
@@ -22,6 +24,7 @@ class VerifyPhone : AppCompatActivity() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var pinPhoneOtp: PinView
     private lateinit var fStore: FirebaseFirestore
+    private lateinit var sharedPreferences: SharedPreferences
     private var verificationCompleted = 0
     private var storedVerificationId: String? = ""
 
@@ -33,6 +36,9 @@ class VerifyPhone : AppCompatActivity() {
         fStore = FirebaseFirestore.getInstance()
 
         pinPhoneOtp = findViewById(R.id.pinPhoneOtp)
+
+        sharedPreferences = getSharedPreferences((R.string.shared_prefs).toString(), Context.MODE_PRIVATE)
+        sharedPreferences.edit().putBoolean("isLoggedIn",false).apply()
 
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -99,7 +105,6 @@ class VerifyPhone : AppCompatActivity() {
                     createUser()
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
-                    // ...
                 } else {
                     toast("Verified but sign in failed")
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
@@ -142,17 +147,26 @@ class VerifyPhone : AppCompatActivity() {
             val userId: String? = auth.currentUser?.uid
             lateinit var documentRef: DocumentReference
             val userHash: MutableMap<String, Any> = HashMap()
-            userHash["ad"] = 1
             userHash["FirstName"] = bundle?.getString("fName").toString()
             userHash["LastName"] = bundle?.getString("lName").toString()
             userHash["Email"] = bundle?.getString("email").toString()
             userHash["phone"] = bundle?.getString("phone").toString()
+            userHash["userId"] = userId.toString()
+            userHash["password"] = bundle?.getString("pass").toString()
 
             auth.createUserWithEmailAndPassword(bundle?.getString("email").toString(),bundle?.getString("pass").toString()).addOnCompleteListener {
-                documentRef = fStore.collection("users").document(userId.toString())
+                documentRef = fStore.collection("users").document(bundle?.getString("phone").toString())
                 documentRef.set(userHash)
             }
+
+            sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
+
             startActivity(Intent(this,Fragment::class.java))
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }
