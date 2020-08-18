@@ -8,12 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.chaos.view.PinView
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
+import com.google.firebase.FirebaseTooManyRequestsException
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
-import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 
 class VerifyPhone : AppCompatActivity() {
@@ -21,9 +22,11 @@ class VerifyPhone : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     private lateinit var code: String
-    private var storedVerificationId: String? = ""
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var pinPhoneOtp: PinView
+    private lateinit var fStore: FirebaseFirestore
+    private var verificationCompleted = 0
+    private var storedVerificationId: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class VerifyPhone : AppCompatActivity() {
                 signIn(credential)
                 code = credential.smsCode.toString()
                 toast(code)
-                startActivity(Intent(this@VerifyPhone, Fragment::class.java))
+                verificationCompleted = 1
             }
             override fun onVerificationFailed(e: FirebaseException) {
                 toast("Server error, try again later, verification failed")
@@ -77,6 +80,10 @@ class VerifyPhone : AppCompatActivity() {
                 true
             } else false
         }
+        if(verificationCompleted == 1) {
+            createUser()
+            startActivity(Intent(this,Fragment::class.java))
+        }
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
@@ -94,7 +101,7 @@ class VerifyPhone : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     toast("Logged in successfully")
-                    startActivity(Intent(this,Fragment::class.java))
+                    verificationCompleted = 1
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
                     // ...
@@ -113,7 +120,7 @@ class VerifyPhone : AppCompatActivity() {
                     task: Task<AuthResult> ->
                 if (task.isSuccessful) {
                     toast("Logged in successfully")
-                    startActivity(Intent(this,Fragment::class.java))
+                    verificationCompleted = 1
                 }
             }
     }
@@ -131,5 +138,9 @@ class VerifyPhone : AppCompatActivity() {
         val phone1 = intent.getStringExtra("phone")!!
         startPhoneNumberVerification(phone1)
 
+    }
+    private fun createUser() {
+//        var bundle: Bundle? = intent.getBundleExtra("bundle")
+//        auth.createUserWithEmailAndPassword(bundle?.getString("email").toString(),bundle?.getString("pass").toString())
     }
 }

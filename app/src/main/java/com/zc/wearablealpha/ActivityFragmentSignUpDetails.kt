@@ -59,6 +59,7 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
         bundle = Bundle()
 
         btnDetailsNext.setOnClickListener {
+            //User Details validation (lot's of if-else)
             if(edtFirstName.text.toString().isNotEmpty()) {
 
                 bundle.putString("firstName",edtFirstName.text.toString())
