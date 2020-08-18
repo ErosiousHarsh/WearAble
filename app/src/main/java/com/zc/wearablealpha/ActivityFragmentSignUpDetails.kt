@@ -107,7 +107,6 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
         }
 
         return rootView
-
     }
 
     private fun showOtherFragment() {

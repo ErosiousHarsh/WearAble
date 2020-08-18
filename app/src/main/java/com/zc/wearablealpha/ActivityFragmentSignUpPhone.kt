@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class ActivityFragmentSignUpPhone(): FragmentChangeListener,Fragment() {
@@ -39,7 +40,7 @@ class ActivityFragmentSignUpPhone(): FragmentChangeListener,Fragment() {
             if (keyEvent.action == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
                 if (edtPhone.text.toString().length == 10) {
                     bundle.putString("phone",edtPhone.text.toString())
-                    startActivity(Intent(activity?.baseContext, VerifyPhone::class.java).putExtra("details",bundle))
+                    startActivity(Intent(activity?.baseContext, VerifyPhone::class.java).putExtra("phone",edtPhone.text.toString()).putExtra("details",bundle))
                 } else {
                     edtPhone.error = "Invalid number"
                 }

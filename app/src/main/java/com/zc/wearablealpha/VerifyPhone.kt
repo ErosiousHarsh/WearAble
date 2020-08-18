@@ -9,11 +9,8 @@ import com.chaos.view.PinView
 import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.*
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.TimeUnit
 
@@ -33,6 +30,7 @@ class VerifyPhone : AppCompatActivity() {
         setContentView(R.layout.phone_verify)
 
         auth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance()
 
         pinPhoneOtp = findViewById(R.id.pinPhoneOtp)
 
@@ -80,10 +78,7 @@ class VerifyPhone : AppCompatActivity() {
                 true
             } else false
         }
-        if(verificationCompleted == 1) {
-            createUser()
-            startActivity(Intent(this,Fragment::class.java))
-        }
+
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
@@ -96,12 +91,14 @@ class VerifyPhone : AppCompatActivity() {
         toast("+91$phoneNumber")
     }
 
+    //User manually enters OTP
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    toast("Logged in successfully")
+                    toast("Logged in successfully 104")
                     verificationCompleted = 1
+                    createUser()
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
                     // ...
@@ -119,8 +116,8 @@ class VerifyPhone : AppCompatActivity() {
             .addOnCompleteListener {
                     task: Task<AuthResult> ->
                 if (task.isSuccessful) {
-                    toast("Logged in successfully")
-                    verificationCompleted = 1
+                    toast("Logged in successfully 118")
+                    createUser()
                 }
             }
     }
@@ -139,8 +136,25 @@ class VerifyPhone : AppCompatActivity() {
         startPhoneNumberVerification(phone1)
 
     }
+
     private fun createUser() {
-//        var bundle: Bundle? = intent.getBundleExtra("bundle")
-//        auth.createUserWithEmailAndPassword(bundle?.getString("email").toString(),bundle?.getString("pass").toString())
+        if(verificationCompleted == 1) {
+
+            val bundle: Bundle? = intent.getBundleExtra("details")
+            val userId: String? = auth.currentUser?.uid
+            lateinit var documentRef: DocumentReference
+            val userHash: MutableMap<String, Any> = HashMap()
+            userHash["ad"] = 1
+            userHash["FirstName"] = bundle?.getString("fName").toString()
+            userHash["LastName"] = bundle?.getString("lName").toString()
+            userHash["Email"] = bundle?.getString("email").toString()
+            userHash["phone"] = bundle?.getString("phone").toString()
+
+            auth.createUserWithEmailAndPassword(bundle?.getString("email").toString(),bundle?.getString("pass").toString()).addOnCompleteListener {
+                documentRef = fStore.collection("users").document(userId.toString())
+                documentRef.set(userHash)
+            }
+            startActivity(Intent(this,Fragment::class.java))
+        }
     }
 }

@@ -9,13 +9,6 @@ class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
 
     override fun replaceFragment(bundle: Bundle) {
 
-//        val fragmentManager = supportFragmentManager
-//        val fragmentTransaction = fragmentManager.beginTransaction()
-//
-//        fragmentTransaction.replace(R.id.fragmentSignUp, fragment, fragment.toString())
-//        fragmentTransaction.addToBackStack(fragment.toString())
-//        fragmentTransaction.commit()
-
         supportFragmentManager.commit {
 
             val frag = ActivityFragmentSignUpPhone()
