@@ -6,15 +6,12 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.activity_user.view.*
 
-class MainActivity : Loading, AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var btnSignUp: Button
@@ -26,7 +23,7 @@ class MainActivity : Loading, AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
         val isLoggedIn = sharedPreferences.getBoolean("isLoggedIn",false)
-        setContentView(R.layout.activity_user)
+        setContentView(R.layout.activity_main)
 
         if(isLoggedIn) {
             startActivity(Intent(this, com.zc.wearablealpha.Fragment::class.java))
@@ -68,13 +65,4 @@ class MainActivity : Loading, AppCompatActivity() {
         alert.show()
     }
 
-    private fun startLoading(v: View) {
-        v.alpha = 0.7F
-        v.progress_circular.visibility = View.VISIBLE
-    }
-
-    private fun stopLoading(v: View) {
-        v.alpha = 1F
-        v.progress_circular.visibility = View.INVISIBLE
-    }
 }

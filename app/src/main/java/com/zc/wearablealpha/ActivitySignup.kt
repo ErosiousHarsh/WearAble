@@ -1,16 +1,16 @@
 package com.zc.wearablealpha
 
-import android.R.attr.fragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.commit
 
 
 class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
 
+
     override fun replaceFragment(bundle: Bundle) {
+
         val fragment = ActivityFragmentSignUpPhone()
         fragment.arguments = bundle
         val fragmentManager: FragmentManager = supportFragmentManager
@@ -21,12 +21,6 @@ class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
         fragmentTransaction.addToBackStack(fragment.toString())
         fragmentTransaction.commit()
 
-//        supportFragmentManager.commit {
-//
-//            val frag = ActivityFragmentSignUpPhone()
-//            frag.arguments = bundle
-//            replace(R.id.fragmentSignUp, frag)
-//        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +32,5 @@ class ActivitySignup : FragmentChangeListener,AppCompatActivity() {
         val fragment = ActivityFragmentSignUpDetails()
         fragmentTransaction.add(R.id.fragmentSignUp, fragment)
         fragmentTransaction.commit()
-
-
     }
 }

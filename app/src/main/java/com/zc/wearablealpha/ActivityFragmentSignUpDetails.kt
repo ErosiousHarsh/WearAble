@@ -1,16 +1,22 @@
 package com.zc.wearablealpha
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.ProgressBar
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
 
     //Variables declaration
+
     private lateinit var matTxtFirstName: com.google.android.material.textfield.TextInputLayout
     private lateinit var edtFirstName: EditText
 
@@ -77,6 +83,9 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
                         if(edtPassword.text.toString().equals(edtPasswordConfirm.text.toString())) {
                             bundle.putString("passConfirm",edtPasswordConfirm.text.toString())
                             matTxtPasswordConfirm.isErrorEnabled = false
+//                            flSignUp.setBackgroundColor(Color.BLACK)
+//                            flSignUp.alpha = 0.6F
+//                            progressBarSignUp.visibility = View.VISIBLE
                             showOtherFragment()
                         } else {
                             matTxtPasswordConfirm.error = "Password's do not match"

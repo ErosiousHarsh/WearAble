@@ -98,7 +98,6 @@ class VerifyPhone : AppCompatActivity() {
 
             }
         }
-
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
@@ -181,11 +180,13 @@ class VerifyPhone : AppCompatActivity() {
             sharedPreferences.edit().putBoolean("isLoggedIn",true).apply()
 
             startActivity(Intent(this,Fragment::class.java))
+            finishAffinity()
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-        finish()
+    override fun onRestart() {
+        super.onRestart()
+        finishAffinity()
     }
+
 }

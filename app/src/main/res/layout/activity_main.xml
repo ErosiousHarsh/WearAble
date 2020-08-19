@@ -1,18 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_centerInParent="true"
+    android:id="@+id/flUser"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ProgressBar
+        android:id="@+id/progress_circular"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:elevation="2dp"
+        android:visibility="invisible"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/rlUser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<!--        android:alpha="0.7"-->
+<!--        android:background="#000000">-->
+
+        <ImageView
+            android:id="@+id/imgBackground"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:src="@drawable/gradient_blue"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/txtBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bangers"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:padding="0dp"
+            android:text="WearAble Beta"
+            android:layout_centerHorizontal="true"
+            android:textColor="#FFFFFF"
+            android:textSize="65sp"/>
+
+        <TextView
+            android:id="@+id/txtIdCreation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get logged in to get personalized \n feed and track your orders"
+            android:textColor="#F0F0F0"
+            android:shadowColor="@color/black"
+            android:shadowRadius="1"
+            android:layout_marginTop="120dp"
+            android:textSize="20sp"
+            android:gravity="center_horizontal"
+            android:padding="10dp"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="40dp">
+
+            <Button
+                android:id="@+id/btnSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign in"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@drawable/rounded_corners_blue"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="270dp"
+                android:layout_marginBottom="25dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="5dp"
+                android:padding="10dp"
+                android:visibility="visible"
+                android:textAllCaps="false"
+                android:shadowRadius="5"/>
+
+            <Button
+                android:id="@+id/btnSignUp"
+                android:layout_width="361dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnSignIn"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_corners"
+                android:text="Sign up"
+                android:textAllCaps="false"
+                android:textColor="#1D5FA9"
+                android:textSize="17sp"
+                android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btnSkip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Skip sign in for now"
+                android:padding="10dp"
+                android:textColor="#1D5FA9"
+                android:textSize="18sp"
+                android:background="@android:color/transparent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="false"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>
