@@ -93,6 +93,9 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
             } else {
                 matTxtFirstName.error = "Enter valid first name"
             }
+            if(edtEmail.text.toString().isNotEmpty()) {
+                bundle.putString("email", edtEmail.text.toString())
+            }
 
         }
 

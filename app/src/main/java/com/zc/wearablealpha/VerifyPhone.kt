@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.KeyEvent
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chaos.view.PinView
@@ -24,6 +25,7 @@ class VerifyPhone : AppCompatActivity() {
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var pinPhoneOtp: PinView
     private lateinit var fStore: FirebaseFirestore
+    private lateinit var btnVerifyNext: Button
     private lateinit var sharedPreferences: SharedPreferences
     private var verificationCompleted = 0
     private var storedVerificationId: String? = ""
@@ -36,8 +38,9 @@ class VerifyPhone : AppCompatActivity() {
         fStore = FirebaseFirestore.getInstance()
 
         pinPhoneOtp = findViewById(R.id.pinPhoneOtp)
+        btnVerifyNext = findViewById(R.id.btnVerifyNext)
 
-        sharedPreferences = getSharedPreferences((R.string.shared_prefs).toString(), Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("shared_prefs", Context.MODE_PRIVATE)
         sharedPreferences.edit().putBoolean("isLoggedIn",false).apply()
 
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -84,6 +87,18 @@ class VerifyPhone : AppCompatActivity() {
             } else false
         }
 
+        btnVerifyNext.setOnClickListener {
+            if (pinPhoneOtp.text.toString().length == 6) {
+                val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
+                    storedVerificationId!!,
+                    pinPhoneOtp.text.toString()
+                )
+                signInWithPhoneAuthCredential(credential)
+            } else {
+
+            }
+        }
+
     }
 
     private fun startPhoneNumberVerification(phoneNumber: String) {
@@ -100,11 +115,11 @@ class VerifyPhone : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    toast("Logged in successfully 104")
+                    toast("Logged in successfully 118")
                     verificationCompleted = 1
-                    createUser()
                     // Sign in success, update UI with the signed-in user's information
                     val user = task.result?.user
+                    createUser()
                 } else {
                     toast("Verified but sign in failed")
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
@@ -119,7 +134,7 @@ class VerifyPhone : AppCompatActivity() {
             .addOnCompleteListener {
                     task: Task<AuthResult> ->
                 if (task.isSuccessful) {
-                    toast("Logged in successfully 118")
+                    toast("Logged in successfully 137")
                     createUser()
                 }
             }
@@ -149,7 +164,11 @@ class VerifyPhone : AppCompatActivity() {
             val userHash: MutableMap<String, Any> = HashMap()
             userHash["FirstName"] = bundle?.getString("fName").toString()
             userHash["LastName"] = bundle?.getString("lName").toString()
-            userHash["Email"] = bundle?.getString("email").toString()
+            if (bundle != null) {
+                if(bundle.containsKey("email")) {
+                    userHash["Email"] = bundle.getString("email").toString()
+                }
+            }
             userHash["phone"] = bundle?.getString("phone").toString()
             userHash["userId"] = userId.toString()
             userHash["password"] = bundle?.getString("pass").toString()
