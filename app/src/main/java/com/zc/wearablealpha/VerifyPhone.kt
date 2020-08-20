@@ -161,13 +161,10 @@ class VerifyPhone : AppCompatActivity() {
             val userId: String? = auth.currentUser?.uid
             lateinit var documentRef: DocumentReference
             val userHash: MutableMap<String, Any> = HashMap()
+
             userHash["FirstName"] = bundle?.getString("fName").toString()
             userHash["LastName"] = bundle?.getString("lName").toString()
-            if (bundle != null) {
-                if(bundle.containsKey("email")) {
-                    userHash["Email"] = bundle.getString("email").toString()
-                }
-            }
+            userHash["Email"] = bundle?.getString("email").toString()
             userHash["phone"] = bundle?.getString("phone").toString()
             userHash["userId"] = userId.toString()
             userHash["password"] = bundle?.getString("pass").toString()

@@ -10,8 +10,7 @@
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/rlUser"
-        android:padding="40dp"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:padding="40dp">
 
         <TextView
             android:id="@+id/txtSmsCharges"

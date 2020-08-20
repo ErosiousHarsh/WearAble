@@ -5,56 +5,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-            <ImageView
-                android:id="@+id/imgBackground"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:src="@drawable/gradient_blue"
-                android:scaleType="centerCrop"/>
+    <RelativeLayout
+        android:id="@+id/Top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
 
-            <ImageView
-                android:id="@+id/imgBack"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="15dp"
-                android:foregroundGravity="center"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/ic_baseline_arrow_back_24"
-                android:contentDescription="BackArrow"/>
+        <ImageView
+            android:id="@+id/imgBackground"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:src="@drawable/gradient_blue"
+            android:scaleType="centerCrop"/>
 
-            <TextView
-                android:id="@+id/txtBanner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bangers"
-                android:shadowColor="@color/black"
-                android:shadowRadius="2"
-                android:layout_gravity="start"
-                android:layout_toEndOf="@id/imgBack"
-                android:padding="0dp"
-                android:text="WearAble Beta"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp"/>
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:foregroundGravity="center"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:contentDescription="BackArrow"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@id/txtBanner"
-                android:fontFamily="@font/bangers"
-                android:gravity="center_horizontal"
-                android:shadowColor="@color/black"
-                android:shadowRadius="2"
-                android:text="Verification"
-                android:textColor="#FFFFFF"
-                android:textSize="30sp" />
+        <TextView
+            android:id="@+id/txtBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/bangers"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:gravity="center_vertical"
+            android:layout_toEndOf="@id/imgBack"
+            android:padding="0dp"
+            android:text="WearAble Beta"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"/>
 
-            <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:text="Verification"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/bangers"
+            android:shadowColor="@color/black"
+            android:shadowRadius="2"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:layout_marginEnd="15dp"/>
+
+    </RelativeLayout>
+
+    <TextView
         android:id="@+id/txtWaitingForOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Waiting for OTP "
-        android:layout_below="@id/txtBanner"
+        android:layout_below="@id/Top"
         android:layout_centerHorizontal="true"
         android:textSize="30sp"
         android:layout_marginTop="50dp"
