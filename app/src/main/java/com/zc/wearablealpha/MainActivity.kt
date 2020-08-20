@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if(isLoggedIn) {
-            startActivity(Intent(this, com.zc.wearablealpha.Fragment::class.java))
+            startActivity(Intent(this, Fragment::class.java))
             finish()
         } else {
             toast("Not Logged in")

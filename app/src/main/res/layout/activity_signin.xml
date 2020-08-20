@@ -20,7 +20,6 @@
                 android:scaleType="centerCrop"
                 android:contentDescription="Background" />
 
-
             <ImageView
                 android:id="@+id/imgBack"
                 android:layout_width="50dp"
@@ -99,7 +98,7 @@
                     app:errorEnabled="true">
 
                     <EditText
-                        android:id="@+id/edtFirstName"
+                        android:id="@+id/edtPhoneOrEmail"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/edit_text_border"
@@ -148,7 +147,7 @@
                     android:layout_below="@id/materialTxtPassword"
                     android:text="Remeber me"
                     android:layout_alignStart="@id/materialTxtPassword"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_marginBottom="40dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -161,10 +160,10 @@
                     android:padding="6dp"/>
 
                 <Button
-                    android:id="@+id/btnPhoneNext"
+                    android:id="@+id/btnSigninNext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Login"
+                    android:text="Sign in"
                     android:textColor="@color/white"
                     android:textSize="17sp"
                     android:background="@drawable/rounded_corners_blue"

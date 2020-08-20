@@ -34,7 +34,7 @@ class VerifyPhone : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.phone_verify)
 
-        auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
 
         pinPhoneOtp = findViewById(R.id.pinPhoneOtp)

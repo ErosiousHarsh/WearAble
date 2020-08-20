@@ -92,7 +92,7 @@
             android:layout_below="@id/materialTxtLastName"
             android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
-            android:hint="Email address (optional)"
+            android:hint="Email address"
             app:errorEnabled="true">
 
             <EditText

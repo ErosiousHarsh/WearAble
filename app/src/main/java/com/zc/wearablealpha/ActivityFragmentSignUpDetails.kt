@@ -1,16 +1,11 @@
 package com.zc.wearablealpha
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.ProgressBar
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
@@ -75,20 +70,27 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
                     bundle.putString("lastName",edtLastName.text.toString())
                     matTxtLastName.isErrorEnabled = false
 
-                    if(edtPassword.text.toString().length >7) {
+                    if(edtEmail.text.toString().isNotEmpty()) {
 
-                        bundle.putString("pass",edtPassword.text.toString())
-                        matTxtPassword.isErrorEnabled = false
+                        bundle.putString("email", edtEmail.text.toString())
+                        matTxtEmail.isErrorEnabled = false
 
-                        if(edtPassword.text.toString().equals(edtPasswordConfirm.text.toString())) {
-                            bundle.putString("passConfirm",edtPasswordConfirm.text.toString())
-                            matTxtPasswordConfirm.isErrorEnabled = false
-//                            flSignUp.setBackgroundColor(Color.BLACK)
-//                            flSignUp.alpha = 0.6F
-//                            progressBarSignUp.visibility = View.VISIBLE
-                            showOtherFragment()
+                        if(edtPassword.text.toString().length >7) {
+
+                            bundle.putString("pass", edtPassword.text.toString())
+                            matTxtPassword.isErrorEnabled = false
+
+                            if (edtPassword.text.toString() == edtPasswordConfirm.text.toString()) {
+
+                                bundle.putString("passConfirm", edtPasswordConfirm.text.toString())
+                                matTxtPasswordConfirm.isErrorEnabled = false
+                                showOtherFragment()
+                            } else {
+                                matTxtPasswordConfirm.error = "Password's do not match"
+                            }
+
                         } else {
-                            matTxtPasswordConfirm.error = "Password's do not match"
+                            matTxtEmail.error = "Enter valid email"
                         }
 
                     } else {
@@ -101,9 +103,6 @@ class ActivityFragmentSignUpDetails : FragmentChangeListener,Fragment() {
 
             } else {
                 matTxtFirstName.error = "Enter valid first name"
-            }
-            if(edtEmail.text.toString().isNotEmpty()) {
-                bundle.putString("email", edtEmail.text.toString())
             }
 
         }
