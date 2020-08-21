@@ -117,7 +117,7 @@ class VerifyPhone : AppCompatActivity() {
                     toast("Logged in successfully 118")
                     verificationCompleted = 1
                     // Sign in success, update UI with the signed-in user's information
-                    val user = task.result?.user
+                    task.result?.user
                     createUser()
                 } else {
                     toast("Verified but sign in failed")

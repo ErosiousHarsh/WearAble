@@ -28,8 +28,6 @@ class MainActivity : AppCompatActivity() {
         if(isLoggedIn) {
             startActivity(Intent(this, Fragment::class.java))
             finish()
-        } else {
-            toast("Not Logged in")
         }
 
         rlUser = findViewById(R.id.rlUser)
@@ -53,14 +51,14 @@ class MainActivity : AppCompatActivity() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this)
         builder.setCancelable(false)
         builder.setMessage("Do you want to Exit?")
-        builder.setPositiveButton("Yes",
-                DialogInterface.OnClickListener { dialog, which -> //if user pressed "yes", then he is allowed to exit from application
-                    finish()
-                })
-        builder.setNegativeButton("No",
-                DialogInterface.OnClickListener { dialog, which -> //if user select "No", just cancel this dialog and continue with app
-                    dialog.cancel()
-                })
+        builder.setPositiveButton("Yes"
+        ) { _, _ -> //if user pressed "yes", then he is allowed to exit from application
+            finish()
+        }
+        builder.setNegativeButton("No"
+        ) { dialog, _ -> //if user select "No", just cancel this dialog and continue with app
+            dialog.cancel()
+        }
         val alert: AlertDialog = builder.create()
         alert.show()
     }
