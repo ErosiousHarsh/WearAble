@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:ignore="ScrollViewCount">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:elevation="2dp"
+        android:layout_marginTop="100dp"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -61,20 +66,17 @@
 
             </RelativeLayout>
 
+    <ScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:ignore="ScrollViewCount"
+        android:layout_marginTop="60dp">
+
             <RelativeLayout android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/rlUser"
-                android:padding="40dp"
-                android:layout_marginTop="60dp">
+                android:padding="40dp">
                 <!--    Edit text field to input mobile number-->
-
-                <ProgressBar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible"
-                    android:elevation="2dp"
-                    android:layout_marginTop="100dp"/>
 
                 <TextView
                     android:id="@+id/txtAccountCreation"
@@ -148,7 +150,7 @@
                     android:layout_below="@id/materialTxtPassword"
                     android:text="Remeber me"
                     android:layout_alignStart="@id/materialTxtPassword"
-                    android:layout_marginBottom="40dp"/>
+                    android:layout_marginBottom="60dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -175,7 +177,6 @@
                     android:textAllCaps="false"/>
 
             </RelativeLayout>
+    </ScrollView>
 
-    </FrameLayout>
-
-</ScrollView>
+    </RelativeLayout>
